@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+<div class="col-md-3">
+  <h2>User info</h2>
+
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+      	<th>name</th>
+      	<th><%= current_user.name%></th>
+      </tr>
+      <tr>
+      	<th>introduction</th>
+      	<th><%= current_user.introduction%></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <%=link_to "edit", edit_user_path(current_user.id) %>
+
+  <h2>New book</h2>
+  <%= form_with model: book, url:'/books', local:true do |f| %>
+    <p>Title</p>
+    <%= f.text_field :title %>
+    <p>Opinion</p>
+    <%= f.text_area :body %>
+    <%= f.submit 'Create Book' %>
+    <% end %>
+    </div>
+
