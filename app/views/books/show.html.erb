@@ -1,4 +1,4 @@
-<%= render 'books/list', book: @book %>
+<%= render 'books/list', book: @book_new %>
 
 <div class="col-md-8 offset-md-1">
 		<h2>Book detail</h2>
@@ -10,7 +10,7 @@
           </td>
           <td><%= link_to @book.title, "/books" %></td>
           <td><%= @book.body %></td>
-          <td><%= link_to "Edit", "books/edit", class:  "btn btn-sm btn-success edit_book_1100"%></td>
+          <td><%= link_to "Edit", edit_book_path(@book), class:  "btn btn-sm btn-success edit_book_1100"%></td>
           <td><%= link_to "Destroy", book_path(@book), method: :delete, class:  "btn btn-sm btn-danger destroy_book", "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
       </tbody>
