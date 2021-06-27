@@ -1,31 +1,26 @@
-<div class="container">
-  <div class="row">
 <div class="col-md-3">
   <h2>User info</h2>
-
   <table class="table table-striped">
     <tbody>
       <tr>
-        <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+        <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
       	<th>name</th>
-      	<th><%= current_user.name%></th>
+      	<th><%= user.name %></th>
       </tr>
       <tr>
       	<th>introduction</th>
-      	<th><%= current_user.introduction%></th>
+      	<th><%= user.introduction %></th>
       </tr>
     </tbody>
   </table>
-
-  <%=link_to "edit", edit_user_path(current_user.id) %>
+  <%=link_to "", edit_user_path(user.id), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
 
   <h2>New book</h2>
   <%= form_with model: book, local:true do |f| %>
     <p>Title</p>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control book_title" %>
     <p>Opinion</p>
-    <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
-    <% end %>
-  </div>
-
+    <%= f.text_area :body, class: "form-control book_" %>
+    <%= f.submit 'Create Book', class: "btn btn-success" %>
+  <% end %>
+</div>
