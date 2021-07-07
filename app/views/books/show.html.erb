@@ -3,8 +3,8 @@
     <%= render 'books/list', book: @book_new, user: @book.user %>
 
     <div class="col-md-8 offset-md-1">
-        <h2>Book detail</h2>
-            <table class="table">
+      <h2>Book detail</h2>
+        <table class="table">
           <tbody>
             <tr>
               <td><%= link_to attachment_image_tag @book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:'40x40' %><br>
@@ -17,16 +17,8 @@
               <td><%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-sm btn-danger destroy_book", "data-confirm" => "本当に削除しますか？" %></td>
               <% end %>
               <% if @book.favorited_by?(current_user) %>
-                <td>
-                  <%= link_to book_favorites_path(@book),  class: "red", method: :delete do %>
-                    ♥<%= @book.favorites.count %>
-                  <% end %>
-                </td>
-                <% else %>
-                <td>
-                  <%= link_to book_favorites_path(@book), method: :post do %>
-                    ♥<%= @book.favorites.count %>
-                  <% end %>
+                <td id="favorite_buttons_<%= @book.id %>">
+                  <%= render "favorites/favorites", book: @book %>
                 </td>
               <% end %>
               <div class="comments">
